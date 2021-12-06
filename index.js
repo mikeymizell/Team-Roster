@@ -9,17 +9,20 @@ const promptEmployee = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'Employee Name: '
+            message: 'Employee Name: ',
+            default: 'Danny Miller'
         },
         {
             type: 'input',
             name: 'id',
-            message: 'Employee Id: '
+            message: 'Employee Id: ',
+            default: '13345'
         },
         {
             type: 'input',
             name: 'email',
-            message: 'Employee Email: '
+            message: 'Employee Email: ',
+            default: 'dannyslayer@gmail.com'
         },
         {
             type: 'list',
@@ -90,7 +93,8 @@ ADDING INTERN INFO
         {
             type: 'input',
             name: 'school',
-            message: `Intern's School: `
+            message: `Intern's School: `,
+            default: 'School of Rock'
         }
     ])
     .then(internData => {
@@ -102,11 +106,16 @@ ADDING INTERN INFO
 
 promptEmployee()
     .then(employeeData => {
-        if (employeeData.role === 'Manager')
-            promptManager(employeeData);
-        else if (employeeData.role === 'Engineer')
-            promptEngineer(employeeData);
-        else if (employeeData.role === 'Intern')
-            promptIntern(employeeData);
-    })
-    .then(employeeData => console.log(employeeData));
+        if (employeeData.role === 'Manager') {
+            promptManager(employeeData)
+                .then(employeeData => console.log(employeeData));
+        }
+        else if (employeeData.role === 'Engineer') { 
+            promptEngineer(employeeData)
+                .then(employeeData => console.log(employeeData));
+        }
+        else if (employeeData.role === 'Intern') {
+            promptIntern(employeeData)
+                .then(employeeData => console.log(employeeData));
+        }
+    });
