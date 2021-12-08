@@ -1,10 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { Console } = require('console');
 
-const employee = {};
+const employeeObj = [];
 
-const promptEmployee = () => {
+const promptEmployee = employeeData => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -37,7 +36,8 @@ const promptManager = employeeData => {
     console.log(`
 -------------------
 ADDING MANAGER INFO
--------------------`);
+-------------------
+`);
 
     if(!employeeData.manager){
         employeeData.manager = [];
@@ -48,11 +48,20 @@ ADDING MANAGER INFO
             type: 'input',
             name: 'officeNumber',
             message: `Manager's Office Number: `
+        },
+        {
+            type: 'confirm',
+            name: 'confirmAdd',
+            message: 'Would you like to add another employee?'
         }
     ])
     .then(managerData => {
         employeeData.manager.push(managerData);
-        return employeeData;
+        console.log(employeeData);
+        if(managerData.confirmAdd)
+            promptEmployee(employeeData);
+        else
+            return employeeData;
     })
 }
 
@@ -60,7 +69,8 @@ const promptEngineer = employeeData => {
     console.log(`
 --------------------
 ADDING ENGINEER INFO
---------------------`);
+--------------------
+`);
 
     if(!employeeData.engineer){
         employeeData.engineer = [];
@@ -71,11 +81,20 @@ ADDING ENGINEER INFO
             type: 'input',
             name: 'github',
             message: `Engineer's GitHub Username: `
+        },
+        {
+            type: 'confirm',
+            name: 'confirmAdd',
+            message: 'Would you like to add another employee?'
         }
     ])
     .then(engineerData => {
         employeeData.engineer.push(engineerData);
-        return employeeData;
+        console.log(employeeData);
+        if(engineerData.confirmAdd)
+            promptEmployee(employeeData);
+        else
+            return employeeData;
     })
 }
 
@@ -83,7 +102,8 @@ const promptIntern = employeeData => {
     console.log(`
 ------------------
 ADDING INTERN INFO
-------------------`);
+------------------
+`);
 
     if(!employeeData.intern){
         employeeData.intern = [];
@@ -95,11 +115,20 @@ ADDING INTERN INFO
             name: 'school',
             message: `Intern's School: `,
             default: 'School of Rock'
+        },
+        {
+            type: 'confirm',
+            name: 'confirmAdd',
+            message: 'Would you like to add another employee?'
         }
     ])
     .then(internData => {
         employeeData.intern.push(internData);
-        return employeeData;
+        console.log(employeeData);
+        if(internData.confirmAdd)
+            promptEmployee(employeeData);
+        else
+            return employeeData;
     })
 }
 
