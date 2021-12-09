@@ -3,6 +3,8 @@ const fs = require('fs');
 
 const employeeObj = [];
 
+let i = 0;
+
 const promptEmployee = employeeData => {
     return inquirer.prompt([
         {
@@ -29,7 +31,7 @@ const promptEmployee = employeeData => {
             message: 'What role is this employee?',
             choices: ['Manager', 'Engineer', 'Intern']
         }
-    ])
+    ]);
 };
 
 const promptManager = employeeData => {
@@ -39,15 +41,16 @@ ADDING MANAGER INFO
 -------------------
 `);
 
-    if(!employeeData.manager){
-        employeeData.manager = [];
+    if(!employeeObj.manager){
+        employeeObj.manager = [];
     };
 
     return inquirer.prompt([
         {
             type: 'input',
             name: 'officeNumber',
-            message: `Manager's Office Number: `
+            message: `Manager's Office Number: `,
+            default: '9255973603'
         },
         {
             type: 'confirm',
@@ -55,15 +58,16 @@ ADDING MANAGER INFO
             message: 'Would you like to add another employee?'
         }
     ])
-    .then(managerData => {
-        employeeData.manager.push(managerData);
-        console.log(employeeData);
-        if(managerData.confirmAdd)
-            promptEmployee(employeeData);
-        else
-            return employeeData;
-    })
-}
+    // .then(managerData => {
+    //     employeeObj.manager.push(managerData);
+    //     console.log("From within manager");
+    //     console.log(employeeObj);
+    //     if(managerData.confirmAdd)
+    //         promptEmployee();
+    //     else
+    //         return employeeObj;
+    // });
+};
 
 const promptEngineer = employeeData => {
     console.log(`
@@ -80,7 +84,8 @@ ADDING ENGINEER INFO
         {
             type: 'input',
             name: 'github',
-            message: `Engineer's GitHub Username: `
+            message: `Engineer's GitHub Username: `,
+            default: 'danksterdump'
         },
         {
             type: 'confirm',
@@ -95,8 +100,8 @@ ADDING ENGINEER INFO
             promptEmployee(employeeData);
         else
             return employeeData;
-    })
-}
+    });
+};
 
 const promptIntern = employeeData => {
     console.log(`
@@ -129,15 +134,28 @@ ADDING INTERN INFO
             promptEmployee(employeeData);
         else
             return employeeData;
-    })
-}
+    });
+};
 
 
 promptEmployee()
     .then(employeeData => {
+        employeeObj.push(employeeData);
         if (employeeData.role === 'Manager') {
-            promptManager(employeeData)
-                .then(employeeData => console.log(employeeData));
+            console.log("I am reaching here");
+            return promptManager(employeeObj)
+                //.then(employeeData => console.log(employeeData));
+                .then(managerData => {
+                    employeeObj.manager.push(managerData);
+                    console.log("From within manager");
+                    console.log(employeeObj);
+                    i++;
+                    console.log(i);
+                    if(managerData.confirmAdd)
+                        return promptEmployee(employeeObj);
+                    else
+                        return employeeObj;
+                });
         }
         else if (employeeData.role === 'Engineer') { 
             promptEngineer(employeeData)
