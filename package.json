@@ -1,5 +1,28 @@
 {
   "dependencies": {
     "inquirer": "^8.2.0"
-  }
+  },
+  "name": "team-roster",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "jest": "^27.4.5"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeymizell/Team-Roster.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikeymizell/Team-Roster/issues"
+  },
+  "homepage": "https://github.com/mikeymizell/Team-Roster#readme"
 }
