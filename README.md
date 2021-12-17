@@ -40,8 +40,6 @@
 
   [GitHub Repo](https://github.com/mikeymizell/Team-Roster)
 
-  [Project Website](https://mikeymizell.github.io/Team-Roster)
-
   ### Video Links: 
   
   [Console Application and Html generation](https://drive.google.com/file/d/1sx5GyIGX_oKLd7WxU3ARZhog_mJ7qQ0d/view)
