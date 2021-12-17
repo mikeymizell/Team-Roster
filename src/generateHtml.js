@@ -6,8 +6,9 @@ const managerCard = manager => {
             <div class="box is-2">
                 <p class="title">${manager.getName()}</p>
                 <p class="subtitle">${manager.getRole()}</p>
-                <p><strong>id:</strong> ${manager.getId()}</p>
-                <p><strong>email:</strong> ${manager.getEmail()}</p>
+                <p><strong>Id:</strong> ${manager.getId()}</p>
+                <p><strong>Email:</strong> <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></p>
+                <p><strong>Office #:</strong> ${manager.getOfficeNumber()}</p>
             </div>
         </div>`;
 }
@@ -18,8 +19,9 @@ const engineerCard = engineer => {
             <div class="box is-2">
                 <p class="title">${engineer.getName()}</p>
                 <p class="subtitle">${engineer.getRole()}</p>
-                <p><strong>id:</strong> ${engineer.getId()}</p>
-                <p><strong>GitHub:</strong> ${engineer.getGithub()}</p>
+                <p><strong>Id:</strong> ${engineer.getId()}</p>
+                <p><strong>Email:</strong> <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
+                <p><strong>GitHub:</strong> <a href="www.github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></p>
             </div>
         </div>`;
 
@@ -32,8 +34,9 @@ const internCard = intern => {
             <div class="box is-2">
                 <p class="title">${intern.getName()}</p>
                 <p class="subtitle">${intern.getRole()}</p>
-                <p><strong>id:</strong> ${intern.getId()}</p>
-                <p><strong>school:</strong> ${intern.getSchool()}</p>
+                <p><strong>Id:</strong> ${intern.getId()}</p>
+                <p><strong>Email:</strong> <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></p>
+                <p><strong>School:</strong> ${intern.getSchool()}</p>
             </div>
         </div>`;
     return internData;
