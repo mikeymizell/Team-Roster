@@ -33,7 +33,7 @@
 
   - Html
 
-  -Bulma
+  - Bulma
 
 
   ### Links:
